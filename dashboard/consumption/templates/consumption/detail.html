@@ -2,4 +2,41 @@
 
 {% block content %}
 
+<div class="container">
+  <h1>{{title}}</h1>
+
+  <ul>
+    <li>User ID: {{user.id}}</li>
+    <li>Area: {{user.area}}</li>
+    <li>Tariff: {{user.tariff}}</li>
+  </ul>
+
+  <canvas id="detail-chart"></canvas>
+  <script type="text/javascript">
+    let ctx = document.getElementById("detail-chart").getContext("2d");
+    new Chart(ctx, {{chart|safe}});
+  </script>
+
+  <h2>All consumptions</h2>
+  <a href="{% url 'summary' %}">Back to summary</a>
+
+  <table class="table table-sm table-striped">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Datetime</th>
+        <th scope="col">Consumption</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for consumption in values %}
+      <tr>
+        <td>{{ consumption.datetime | date:'Y/m/d H:i T' }}</td>
+        <td class="ar">{{ consumption.consumption | floatformat:2 }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+
 {% endblock %}

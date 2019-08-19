@@ -2,6 +2,49 @@
 
 {% block content %}
 
-<h1>{{message}}</h1>
+<div class="container">
+
+  <h1>{{title}}</h1>
+
+  <canvas id="summary-chart"></canvas>
+  <script type="text/javascript">
+    let ctx = document.getElementById("summary-chart").getContext("2d");
+    new Chart(ctx, {{chart|safe}});
+  </script>
+
+  <h2>Users</h2>
+
+  <dev class="table-responsive-sm">
+    <table class="table table-sm table-striped">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">User ID</th>
+          <th scope="col">Area</th>
+          <th scope="col">Tariff</th>
+          <th scope="col">Total</th>
+          <th scope="col">Average</th>
+          <th scope="col">Maximum</th>
+          <th scope="col">Minimum</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for datum in users %}
+        <tr>
+          <td>
+          <a href="{% url 'detail' datum.user_id %}">{{ datum.user_id }}</a>
+          </td>
+          <td>{{ datum.user__area }}</td>
+          <td>{{ datum.user__tariff }}</td>
+          <td class="ar">{{ datum.sum | floatformat:2 }}</td>
+          <td class="ar">{{ datum.avg | floatformat:2 }}</td>
+          <td class="ar">{{ datum.max | floatformat:2 }}</td>
+          <td class="ar">{{ datum.min | floatformat:2 }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
 
 {% endblock %}
