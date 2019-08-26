@@ -1,14 +1,11 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 import json
 
-from django.urls import reverse, resolve
+from django.urls import resolve, reverse
 
 from .base import BaseTestCase
 from ..views import SummaryView
-
-# Create your tests here.
 
 
 class SummaryViewTestCase(BaseTestCase):

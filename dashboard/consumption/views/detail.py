@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 import json
@@ -6,10 +5,8 @@ import json
 from django.db.models import Avg
 from django.views.generic import TemplateView
 
-from ..models import User
 from .mixins import ConsumptionViewMixin
-
-# Create your views here.
+from ..models import User
 
 
 class DetailView(ConsumptionViewMixin, TemplateView):

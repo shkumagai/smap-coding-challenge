@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 import json
@@ -8,8 +7,6 @@ from django.db.models import Avg, Max, Min, Sum
 from django.views.generic import TemplateView
 
 from .mixins import ConsumptionViewMixin
-
-# Create your views here.
 
 
 class SummaryView(ConsumptionViewMixin, TemplateView):
@@ -66,7 +63,7 @@ class SummaryView(ConsumptionViewMixin, TemplateView):
                     'ticks': {
                         'autoSkip': True,
                         'maxTicksLimit': 20,
-                    }
+                    },
                 }],
                 'yAxes': [{
                     'id': 'y-axis-total',

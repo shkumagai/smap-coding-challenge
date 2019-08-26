@@ -7,7 +7,7 @@ from datetime import datetime
 from django.core.management.base import BaseCommand
 from django.utils.timezone import get_default_timezone
 
-from consumption.models import User, Consumption
+from consumption.models import Consumption, User
 
 
 # Environment variables for one-time use
@@ -76,7 +76,7 @@ class Command(BaseCommand):
                 f'User id:{user.id} | '
                 f'Consumption file: {consumption_csv_file_name} | '
                 f'Loaded entry count: {len(consumptions)}'
-                '\n'
+                '\n',
             )
             total += len(consumptions)
         sys.stderr.write(f'Total consumption data: {total:,} loaded.\n')

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from datetime import datetime, timedelta
@@ -6,8 +5,6 @@ from datetime import datetime, timedelta
 from django.utils.timezone import utc
 
 from ..models import Consumption
-
-# Create your views here.
 
 
 class ConsumptionViewMixin:
